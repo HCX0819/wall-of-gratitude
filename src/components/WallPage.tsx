@@ -436,53 +436,63 @@ export default function WallPage({ isAdmin = false, isDemo = false }: { isAdmin?
   return (
     <div className="flex flex-col min-h-screen w-full bg-bg text-text-main overflow-x-hidden wall-background">
       {/* Header */}
-      <header className="px-6 md:px-10 py-8 border-b border-white/10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 glass-header z-20">
-        <div className="header-title flex items-start gap-4">
+      <header className="px-6 md:px-10 py-12 border-b border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 glass-header z-20">
+        <div className="header-title flex items-center gap-6">
           {(isAdmin || isDemo) && (
             <button 
               onClick={() => navigate('/admin')}
-              className="mt-2 p-2 hover:bg-white/5 rounded-lg text-text-dim hover:text-white transition-colors"
+              className="p-3 bg-white/5 hover:bg-white/10 rounded-full text-text-dim hover:text-white transition-all border border-white/10"
               title="Back to Dashboard"
             >
-              <ArrowLeft size={24} />
+              <ArrowLeft size={20} />
             </button>
           )}
-          <div>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-text-dim font-bold">
-              {wall?.name || 'Demo Wall'} {isAdmin && '(Admin Mode)'}
-              {isDemo && <span className="ml-2 text-accent animate-pulse">● DEMO MODE</span>}
-            </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tighter text-accent uppercase mt-1">Wall of Gratitude</h1>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3 mb-1">
+              <span className="h-px w-8 bg-accent/50 hidden md:block"></span>
+              <span className="text-[10px] uppercase tracking-[0.4em] text-text-dim font-black">
+                {wall?.name || 'Curated Collection'} {isAdmin && '— Admin Portal'}
+                {isDemo && <span className="ml-3 text-accent animate-pulse inline-flex items-center gap-1"><span className="w-1 h-1 rounded-full bg-accent"></span> DEMO</span>}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-7xl font-light tracking-tight text-white flex flex-wrap items-baseline gap-x-4">
+              <span className="font-sans font-extrabold uppercase">Wall of</span>
+              <span className="font-serif italic text-accent font-normal">Gratitude</span>
+            </h1>
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row items-start md:items-end gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-8 w-full md:w-auto">
           {/* Search Bar */}
-          <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-dim" size={16} />
+          <div className="relative w-full md:w-72 group">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-text-dim group-focus-within:text-accent transition-colors" size={18} />
             <input
               type="text"
-              placeholder="Search To or From..."
-              className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
+              placeholder="Search by name or team..."
+              className="w-full bg-white/[0.03] border border-white/10 rounded-full py-3 pl-12 pr-6 text-sm focus:outline-none focus:ring-1 focus:ring-accent/30 focus:bg-white/[0.05] transition-all placeholder:text-text-dim/50"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
 
-          <div className="flex gap-6 md:gap-12">
-            <div className="text-right">
-              <span className="text-2xl md:text-3xl font-bold block flex items-center justify-end gap-2">
-                <MessageSquare size={24} className="text-accent" />
-                {notes.length.toLocaleString()}
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.1em] text-text-dim font-bold">Notes Posted</span>
+          <div className="flex gap-10">
+            <div className="flex flex-col items-center md:items-end">
+              <div className="flex items-center gap-2">
+                <MessageSquare size={20} className="text-accent/70" />
+                <span className="text-3xl font-light tracking-tighter">
+                  {notes.length.toLocaleString()}
+                </span>
+              </div>
+              <span className="text-[9px] uppercase tracking-[0.3em] text-text-dim font-bold mt-1">Notes Collected</span>
             </div>
-            <div className="text-right">
-              <span className="text-2xl md:text-3xl font-bold block flex items-center justify-end gap-2">
-                <Users size={24} className="text-accent" />
-                2,000
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.1em] text-text-dim font-bold">Attendees</span>
+            <div className="flex flex-col items-center md:items-end">
+              <div className="flex items-center gap-2">
+                <Users size={20} className="text-accent/70" />
+                <span className="text-3xl font-light tracking-tighter">
+                  2,000
+                </span>
+              </div>
+              <span className="text-[9px] uppercase tracking-[0.3em] text-text-dim font-bold mt-1">Attendees</span>
             </div>
           </div>
           
@@ -615,9 +625,9 @@ export default function WallPage({ isAdmin = false, isDemo = false }: { isAdmin?
         {!isDemo && (
           <button
             onClick={() => setIsFormOpen(true)}
-            className="lg:hidden fixed bottom-6 right-6 w-14 h-14 bg-accent text-white rounded-full shadow-2xl flex items-center justify-center z-50"
+            className="lg:hidden fixed bottom-8 right-8 w-16 h-16 bg-accent text-white rounded-full shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:shadow-[0_0_40px_rgba(245,158,11,0.5)] flex items-center justify-center z-50 transition-all active:scale-95 border-2 border-white/20"
           >
-            <Plus size={24} />
+            <Plus size={28} strokeWidth={3} />
           </button>
         )}
       </main>

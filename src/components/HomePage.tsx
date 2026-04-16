@@ -103,10 +103,16 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-bg text-text-main p-6 md:p-12">
       <header className="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-black">Admin Dashboard</span>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase mt-2">Wall Control Center</h1>
-          <p className="text-text-dim mt-2 max-w-xl">Manage your gratitude walls, create new event spaces, and view historical archives.</p>
+        <div className="flex flex-col">
+          <div className="flex items-center gap-3 mb-1">
+            <span className="h-px w-8 bg-accent/50 hidden md:block"></span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-accent font-black">Admin Dashboard</span>
+          </div>
+          <h1 className="text-4xl md:text-7xl font-light tracking-tight text-white flex flex-wrap items-baseline gap-x-4">
+            <span className="font-sans font-extrabold uppercase">Wall</span>
+            <span className="font-serif italic text-accent font-normal">Control</span>
+          </h1>
+          <p className="text-text-dim mt-4 max-w-xl font-medium leading-relaxed">Manage your gratitude collections, curate event spaces, and preserve historical archives with precision.</p>
         </div>
         
         <div className="flex gap-4">

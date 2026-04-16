@@ -99,12 +99,18 @@ export default function LeaderboardPage() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 pt-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl font-black uppercase tracking-tighter italic mb-2">
-            Most Loved <span className="text-accent">Gratitude</span>
+      <main className="max-w-4xl mx-auto px-4 pt-16">
+        <div className="mb-16 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="h-px w-8 bg-accent/50"></span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-accent font-black">Community Recognition</span>
+            <span className="h-px w-8 bg-accent/50"></span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-light tracking-tight text-white flex flex-col items-center gap-2">
+            <span className="font-sans font-extrabold uppercase">Most Loved</span>
+            <span className="font-serif italic text-accent font-normal">Expressions</span>
           </h2>
-          <p className="text-slate-400 font-medium">{wall?.name}</p>
+          <p className="text-slate-400 font-medium mt-6 uppercase tracking-[0.2em] text-[10px]">{wall?.name}</p>
         </div>
 
         <div className="space-y-4">
